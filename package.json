@@ -1,0 +1,57 @@
+{
+  "name": "version-bumper",
+  "version": "0.1.0",
+  "description": "Version bumper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Digznav/version-bumper.git"
+  },
+  "keywords": [
+    "bump",
+    "version",
+    "node",
+    "tag",
+    "prompt"
+  ],
+  "author": "Diego Miguel <digznav@gmail.com> (https://github.com/Digznav)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Digznav/version-bumper/issues"
+  },
+  "homepage": "https://github.com/Digznav/version-bumper#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier": "^1.7.4"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "figures": "^2.0.0",
+    "git-promise": "^0.3.1",
+    "inquirer": "^3.3.0",
+    "openurl": "^1.1.1",
+    "semver": "^5.4.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 version",
+    "Android >= 4.1",
+    "iOS >= 7.1"
+  ],
+  "engines": {
+    "node": ">=7",
+    "npm": ">=5"
+  }
+}
