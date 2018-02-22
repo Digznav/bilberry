@@ -16,6 +16,7 @@
   "license": "MIT",
   "author": "Diego Miguel <digznav@gmail.com> (https://github.com/Digznav)",
   "main": "index.js",
+  "bin": "./bin/magicli.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Digznav/version-bumper.git"
@@ -25,7 +26,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "glob-promise": "^3.3.0"
+    "glob-promise": "^3.3.0",
+    "magicli": "^0.1.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
