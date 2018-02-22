@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const npsUtils = require('nps-utils');
 
 const serialize = npsUtils.series;
@@ -17,14 +18,16 @@ const npsSeries = (...scriptNames) =>
 
 const bins = {
   prettier: './node_modules/.bin/prettier --write',
-  eslint: './node_modules/.bin/eslint "**/*.js"',
-  spj: './node_modules/.bin/sort-package-json'
+  eslint: './node_modules/.bin/eslint "**/*.js" ".*.js"',
+  spj: './node_modules/.bin/sort-package-json',
+  nodemon: './node_modules/.bin/nodemon'
 };
 
 const prettierFlags = ['--single-quote', '--print-width=120', '--parser=flow'];
 
 module.exports = {
   scripts: {
+    default: `${bins.nodemon} index.js`,
     // test: `${bins.karma} start test/karma.config.js`,
     js: {
       format: `${bins.prettier} ${prettierFlags.join(' ')} "**/*.js"`,

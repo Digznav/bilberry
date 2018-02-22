@@ -22,6 +22,7 @@
   "rules": {
     "no-var": "off",
     "promise/avoid-new": "off",
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "no-console": "off"
   }
 }
