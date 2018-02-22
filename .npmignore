@@ -1,0 +1,10 @@
+# Folders
+
+# Config files
+.editorconfig
+.eslint*
+.npmscripts.js
+.nvmrc
+
+# Other
+package-lock.json

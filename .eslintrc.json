@@ -5,14 +5,10 @@
     "plugin:node/recommended",
     "plugin:promise/recommended"
   ],
-  "plugins": [
-    "prettier",
-    "node",
-    "promise"
-  ],
+  "plugins": ["prettier", "node", "promise"],
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 2016,
+    "ecmaVersion": 2017,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -25,6 +21,7 @@
   },
   "rules": {
     "no-var": "off",
-    "promise/avoid-new": "off"
+    "promise/avoid-new": "off",
+    "semi": ["error", "always"]
   }
 }
