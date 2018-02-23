@@ -7,16 +7,16 @@ const gitUtil = require('git-promise/util');
  */
 function gitPorcelainStatus() {
   return git('status --porcelain -b', stdout => {
-    var status = gitUtil.extractStatus(stdout);
-    var overallGitStatus = Object.values(status.index).concat(Object.values(status.workingTree));
+    const status = gitUtil.extractStatus(stdout);
+    let parsedStatus = Object.values(status.index).concat(Object.values(status.workingTree));
 
     // Flattened
-    overallGitStatus = overallGitStatus.reduce((a, b) => a.concat(b), []);
+    parsedStatus = parsedStatus.reduce((a, b) => a.concat(b), []);
 
     return {
       status,
       currentBranch: status.branch.split('...')[0],
-      clean: overallGitStatus.length === 0
+      clean: parsedStatus.length === 0
     };
   });
 }

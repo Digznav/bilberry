@@ -1,4 +1,4 @@
-const promiseWriteFile = require('./_promise-write-file');
+const promiseWriteFile = require('./promise-write-file');
 
 /**
  * Create Changelog files.
@@ -9,12 +9,12 @@ const promiseWriteFile = require('./_promise-write-file');
  * @return {promise}            A promise to do it.
  */
 function changelog(tagsList, prevTag, repoUrl, repoName) {
-  var writeLogFiles = [];
-  var logIndex;
-  var logDetailed;
-  var logContent;
-  var link;
-  var prevTagHolder = prevTag;
+  const writeLogFiles = [];
+  let logIndex;
+  let logDetailed;
+  let logContent;
+  let link;
+  let prevTagHolder = prevTag;
 
   Object.keys(tagsList).forEach(majorVersion => {
     logIndex = [];

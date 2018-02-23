@@ -1,7 +1,7 @@
 const Semver = require('semver');
 const git = require('git-promise');
-const log = require('./_log');
-const gitDateOf = require('./_git-tags-info');
+const log = require('./log');
+const gitDateOf = require('./git-tags-info');
 
 /**
  * Information of existing tags.
@@ -9,11 +9,11 @@ const gitDateOf = require('./_git-tags-info');
  * @return {array}          Full info of tags and the first commit.
  */
 function gitTagsInfo(newTag) {
-  var date = new Date().toISOString();
+  const date = new Date().toISOString();
 
   return Promise.all([
     git('git tag -l', stdout => {
-      var allTags = stdout
+      const allTags = stdout
         .toString()
         .trim()
         .split('\n')
@@ -26,10 +26,10 @@ function gitTagsInfo(newTag) {
       return allTags;
     })
       .then(infoOfTags => {
-        var tagsHolder = {};
-        var currentMajor = 1;
-        var nextMajor = 2;
-        var groups = [];
+        const tagsHolder = {};
+        let currentMajor = 1;
+        let nextMajor = 2;
+        let groups = [];
 
         infoOfTags.push(newTag);
 

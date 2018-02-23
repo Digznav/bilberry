@@ -7,7 +7,7 @@ const gitUtil = require('git-promise/util');
  */
 function gitCurrentBranch() {
   return git('status --porcelain -b', stdout => {
-    var status = gitUtil.extractStatus(stdout);
+    const status = gitUtil.extractStatus(stdout);
     return status.branch.split('...')[0];
   });
 }

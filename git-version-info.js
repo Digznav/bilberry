@@ -8,10 +8,10 @@ const Semver = require('semver');
  * @return {object}             Available versions.
  */
 function gitVersionInfo(baseVer = '0.1.0') {
-  var current = new Semver(baseVer);
-  var identifier = current.prerelease[0] || 'beta';
-  var prompt = [];
-  var types = {
+  const current = new Semver(baseVer);
+  const identifier = current.prerelease[0] || 'beta';
+  const prompt = [];
+  const types = {
     major: 'major',
     minor: 'minor',
     patch: 'patch',

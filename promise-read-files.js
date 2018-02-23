@@ -1,6 +1,6 @@
 const glob = require('glob-promise');
-const pReadFile = require('./_promise-read-file');
-const log = require('./_log');
+const pReadFile = require('./promise-read-file');
+const log = require('./log');
 
 /**
  * Get the content of files using the patterns the shell uses, like stars and stuff.
