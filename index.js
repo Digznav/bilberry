@@ -1,3 +1,5 @@
-const test = 'Hello world';
+const bumpVersion = require('./bump');
 
-console.log(test);
+module.exports = {
+  bump: bumpVersion
+};
