@@ -2,6 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
+const git = require('git-promise');
+const figures = require('figures');
+const inquirer = require('inquirer');
+const opn = require('opn');
 
 const $ = require('./library');
 
@@ -53,13 +57,13 @@ $.gitPorcelainStatus()
     ]);
   })
   .then(answers => {
-    PKG.version = answers.newVersion;
+    packageJson.version = answers.newVersion;
     packageLock.version = answers.newVersion;
 
     // Update Package files
     return Promise.all([
-      $.writeFileP(path.join(cwd, 'package.json'), PKG, 2),
-      $.writeFileP(path.join(cwd, 'package-lock.json'), packageLock, 2)
+      $.promiseWriteFile(path.join(cwd, 'package.json'), packageJson, 2),
+      $.promiseWriteFile(path.join(cwd, 'package-lock.json'), packageLock, 2)
     ]);
   })
   .then(([rewritePKG, rewritePKGLOCK]) => {
@@ -69,10 +73,10 @@ $.gitPorcelainStatus()
       `${figures.arrowRight} ${rewritePKGLOCK.fileName}`
     );
 
-    return $.tagsInfo(`v${PKG.version}`);
+    return $.gitTagsInfo(`v${packageJson.version}`);
   })
   .then(([tagsList, firstCommit]) =>
-    $.createChangelog(
+    $.changelog(
       // Object with all the tags info.
       tagsList,
       // First commit.
@@ -80,7 +84,7 @@ $.gitPorcelainStatus()
       // URL of the repository.
       repoURL,
       // Name of the repository.
-      $.capitalize(PKG.name.replace(/-/g, ' '))
+      $.capitalize(packageJson.name.replace(/-/g, ' '))
     )
   )
   .then(result => {
@@ -94,30 +98,30 @@ $.gitPorcelainStatus()
     return git(`add ${filesToAdd.join(' ')}`);
   })
   .then(() => {
-    var commitMessage = `Bump version to ${PKG.version}`;
+    var commitMessage = `Bump version to ${packageJson.version}`;
 
-    return git(`commit -m "${commitMessage}"`, $.parseGitOutput);
+    return git(`commit -m "${commitMessage}"`, $.gitParseOutput);
   })
   .then(status => {
     $.log(...status);
 
-    return git(`push origin ${targetBranch}`, $.parseGitOutput);
+    return git(`push origin ${targetBranch}`, $.gitParseOutput);
   })
   .then(status => {
     $.log(...status);
 
-    return git(`tag -a -m "Tag version ${PKG.version}." "v${PKG.version}"`);
+    return git(`tag -a -m "Tag version ${packageJson.version}." "v${packageJson.version}"`);
   })
-  .then(() => git('git push origin --tags', $.parseGitOutput))
+  .then(() => git('git push origin --tags', $.gitParseOutput))
   .then(status => {
-    var publicURL = `${repoURL}/releases/tag/v${PKG.version}`;
+    var publicURL = `${repoURL}/releases/tag/v${packageJson.version}`;
 
     $.log(...status);
 
-    $.log.success(`Release v${PKG.version} was generated!`);
+    $.log.success(`Release v${packageJson.version} was generated!`);
 
     $.log(`Please go to: ${chalk.underline(publicURL)}`, 'to describe the new changes/features added in this release.');
 
-    return openUrl.open(publicURL);
+    return opn(publicURL, { app: 'google chrome' });
   })
   .catch($.log.error);
