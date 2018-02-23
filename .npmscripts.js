@@ -19,16 +19,13 @@ const npsSeries = (...scriptNames) =>
 const bins = {
   prettier: './node_modules/.bin/prettier --write',
   eslint: './node_modules/.bin/eslint "**/*.js" .bin/*.js ".*.js" --no-ignore',
-  spj: './node_modules/.bin/sort-package-json',
-  nodemon: './node_modules/.bin/nodemon'
+  spj: './node_modules/.bin/sort-package-json'
 };
 
 const prettierFlags = ['--single-quote', '--print-width=120', '--parser=flow'];
 
 module.exports = {
   scripts: {
-    default: `${bins.nodemon} index.js`,
-    // test: `${bins.karma} start test/karma.config.js`,
     js: {
       format: `${bins.prettier} ${prettierFlags.join(' ')} "**/*.js"`,
       lint: {
