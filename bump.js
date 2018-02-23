@@ -129,7 +129,7 @@ function bumpVersion() {
 
       log(`Please go to: ${chalk.underline(publicURL)}`, 'to describe the new changes/features added in this release.');
 
-      return opn(publicURL, { app: 'google chrome' });
+      return opn(publicURL, { wait: false });
     })
     .catch(log.error);
 }
