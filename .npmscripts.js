@@ -38,7 +38,11 @@ module.exports = {
       format: serialize(bins.spj, `${bins.prettier} --parser=json "*.json"`)
     },
     bump: {
-      default: serialize(npsSeries('js.lint.strict'), 'node scripts/bump.js', 'npm publish'),
+      default: serialize(
+        npsSeries('js.lint.strict'),
+        'node scripts/bump.js'
+        // 'npm publish'
+      ),
       link: serialize(npsSeries('js.lint.strict'), 'npm link')
     }
   }

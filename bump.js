@@ -1,11 +1,10 @@
-/* eslint-disable import/no-dynamic-require */
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const git = require('git-promise');
 const figures = require('figures');
 const inquirer = require('inquirer');
-// const opn = require('opn');
+const opn = require('opn');
 
 const log = require('./log');
 const gitVersionInfo = require('./git-version-info');
@@ -110,28 +109,28 @@ function bumpVersion() {
 
       return git(`commit -m "${commitMessage}"`, gitParseOutput);
     })
-    // .then(status => {
-    //   log(...status);
+    .then(status => {
+      log(...status);
 
-    //   return git(`push origin ${targetBranch}`, gitParseOutput);
-    // })
-    // .then(status => {
-    //   log(...status);
+      return git(`push origin ${targetBranch}`, gitParseOutput);
+    })
+    .then(status => {
+      log(...status);
 
-    //   return git(`tag -a -m "Tag version ${packageJson.version}." "v${packageJson.version}"`);
-    // })
-    // .then(() => git('git push origin --tags', gitParseOutput))
-    // .then(status => {
-    //   var publicURL = `${repoURL}/releases/tag/v${packageJson.version}`;
+      return git(`tag -a -m "Tag version ${packageJson.version}." "v${packageJson.version}"`);
+    })
+    .then(() => git('git push origin --tags', gitParseOutput))
+    .then(status => {
+      var publicURL = `${repoURL}/releases/tag/v${packageJson.version}`;
 
-    //   log(...status);
+      log(...status);
 
-    //   log.success(`Release v${packageJson.version} was generated!`);
+      log.success(`Release v${packageJson.version} was generated!`);
 
-    //   log(`Please go to: ${chalk.underline(publicURL)}`, 'to describe the new changes/features added in this release.');
+      log(`Please go to: ${chalk.underline(publicURL)}`, 'to describe the new changes/features added in this release.');
 
-    //   return opn(publicURL, { app: 'google chrome' });
-    // })
+      return opn(publicURL, { app: 'google chrome' });
+    })
     .catch(log.error);
 }
 

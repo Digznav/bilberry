@@ -23,6 +23,7 @@
     "no-var": "off",
     "promise/avoid-new": "off",
     "semi": ["error", "always"],
-    "no-console": "off"
+    "no-console": "off",
+    "import/no-dynamic-require": "off"
   }
 }

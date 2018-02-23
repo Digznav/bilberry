@@ -1,7 +1,7 @@
 const Semver = require('semver');
 const git = require('git-promise');
 const log = require('./log');
-const gitDateOf = require('./git-tags-info');
+const gitDateOf = require('./git-date-of');
 
 /**
  * Information of existing tags.
