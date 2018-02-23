@@ -1,5 +1,5 @@
 {
-  "name": "carrot",
+  "name": "bilberry",
   "version": "0.2.1",
   "description": "A lightweight, vanilla JavaScript library for Node.",
   "keywords": [
@@ -32,7 +32,6 @@
     "glob-promise": "^3.3.0",
     "inquirer": "^5.1.0",
     "magicli": "^0.1.2",
-    "npm-name": "^3.1.0",
     "opn": "^5.2.0",
     "semver": "^5.5.0"
   },
