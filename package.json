@@ -1,5 +1,5 @@
 {
-  "name": "bump-and-changelog",
+  "name": "k-on",
   "version": "0.1.0",
   "description": "Version bumper",
   "keywords": [
@@ -26,8 +26,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "chalk": "^2.3.1",
+    "figures": "^2.0.0",
+    "git-promise": "^0.3.1",
     "glob-promise": "^3.3.0",
-    "magicli": "^0.1.2"
+    "magicli": "^0.1.2",
+    "semver": "^5.5.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
