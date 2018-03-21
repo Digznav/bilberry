@@ -19,13 +19,15 @@ const npsSeries = (...scriptNames) =>
 const bins = {
   prettier: './node_modules/.bin/prettier --write',
   eslint: './node_modules/.bin/eslint "**/*.js" .bin/*.js ".*.js" --no-ignore',
-  spj: './node_modules/.bin/sort-package-json'
+  spj: './node_modules/.bin/sort-package-json',
+  mocha: './node_modules/mocha/bin/mocha'
 };
 
 const prettierFlags = ['--single-quote', '--print-width=120', '--parser=flow'];
 
 module.exports = {
   scripts: {
+    test: `${bins.mocha} --reporter spec`,
     js: {
       format: `${bins.prettier} ${prettierFlags.join(' ')} "**/*.js"`,
       lint: {
