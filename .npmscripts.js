@@ -27,7 +27,7 @@ const prettierFlags = ['--single-quote', '--print-width=120', '--parser=flow'];
 
 module.exports = {
   scripts: {
-    test: `${bins.mocha} --reporter spec`,
+    test: `NODE_ENV=test ${bins.mocha} --reporter spec`,
     js: {
       format: `${bins.prettier} ${prettierFlags.join(' ')} "**/*.js"`,
       lint: {
