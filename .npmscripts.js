@@ -16,26 +16,22 @@ const npsSeries = (...scriptNames) =>
       .map(scriptName => `nps -c .npmscripts.js ${quoteScript(scriptName)}`)
   );
 
-const bins = {
-  prettier: './node_modules/.bin/prettier --write',
-  eslint: './node_modules/.bin/eslint "**/*.js" .bin/*.js ".*.js" --no-ignore',
-  spj: './node_modules/.bin/sort-package-json'
-};
-
+const eslint = 'eslint "**/*.js" .bin/*.js ".*.js" --no-ignore';
+const prettier = 'prettier --write';
 const prettierFlags = ['--single-quote', '--print-width=120', '--parser=flow'];
 
 module.exports = {
   scripts: {
     js: {
-      format: `${bins.prettier} ${prettierFlags.join(' ')} "**/*.js"`,
+      format: `${prettier} ${prettierFlags.join(' ')} "**/*.js"`,
       lint: {
-        default: `${bins.eslint} || true`,
-        fix: `${bins.eslint} --fix`,
-        strict: bins.eslint
+        default: `${eslint} || true`,
+        fix: `${eslint} --fix`,
+        strict: eslint
       }
     },
     json: {
-      format: serialize(bins.spj, `${bins.prettier} --parser=json "*.json"`)
+      format: serialize('sort-package-json', `${prettier} --parser=json "*.json"`)
     },
     bump: {
       default: serialize(npsSeries('js.lint.strict'), 'node scripts/bump.js', 'npm publish'),
