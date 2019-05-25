@@ -23,7 +23,7 @@
   "bin": "./bin/magicli.js",
   "scripts": {
     "start": "nps --config .npmscripts.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nps --config .npmscripts.js test"
   },
   "dependencies": {
     "chalk": "^2.4.1",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
+    "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.10.0",
@@ -46,6 +47,7 @@
     "eslint-plugin-prettier": "^2.7.0",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.11.1",
+    "mocha": "^5.0.4",
     "nps": "^5.9.3",
     "nps-utils": "^1.7.0",
     "prettier": "^1.15.3",
