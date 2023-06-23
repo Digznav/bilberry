@@ -33,7 +33,7 @@
     "inquirer": "^5.1.0",
     "magicli": "^0.1.2",
     "opn": "^5.2.0",
-    "semver": "^5.5.0"
+    "semver": "^7.5.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
